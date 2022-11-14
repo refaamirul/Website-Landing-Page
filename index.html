@@ -264,19 +264,15 @@
       <div class="heading">
         <h2>Contact</h2>
         <span>Contact With Us</span>
-        <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
-          <strong>Terimakasih!</strong> Pesan anda sudah kami terima.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
       </div>
 
       <!-- Form -->
       <div class="contact-form">
-        <form name="wpu-contact-form" action="">
-          <input type="text" placeholder="Your Name" name="nama" />
-          <input type="email" placeholder="Your Email" name="email" />
-          <textarea name="pesan" id="" cols="30" rows="10" placeholder="Write Message Here..."></textarea>
-          <button type="submit" value="Send" class="contact-button"></button>
+        <form action="">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Your Email" />
+          <textarea name="" id="" cols="30" rows="10" placeholder="Write Message Here..."></textarea>
+          <input type="button" value="Send" class="contact-button" />
         </form>
       </div>
     </section>
@@ -298,33 +294,5 @@
 
     <!-- JS Files -->
     <script src="js/script.js"></script>
-
-    <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzhzYBjz7OFvouw1LfLvb13DC53Wa9HFEdtbL-RBMHQaNh0Zq80qQh_YufqSZqw0OEVrQ/exec';
-      const form = document.forms['wpu-contact-form'];
-      const btnKirim = document.querySelector('.btn-kirim');
-      const btnLoading = document.querySelector('.btn-loading');
-      const myAlert = document.querySelector('.my-alert');
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // ketika tombol submit diklik
-        // tampilkan tombol loading, hilangkan tombol kirim
-        btnLoading.classList.toggle('d-none');
-        btnKirim.classList.toggle('d-none');
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then((response) => {
-            // tampilkan tombol kirim, hilangkan tombol loading
-            btnLoading.classList.toggle('d-none');
-            btnKirim.classList.toggle('d-none');
-            // tampilkan alert
-            myAlert.classList.toggle('d-none');
-            // reset formnya
-            form.reset();
-            console.log('Success!', response);
-          })
-          .catch((error) => console.error('Error!', error.message));
-      });
-    </script>
   </body>
 </html>
